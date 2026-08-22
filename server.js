@@ -247,9 +247,13 @@ Format using markdown.`;
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`\n  🌊 Slip Stream Flawless AI Proxy running at http://localhost:${PORT}`);
-  console.log(`     - Model: ${MODEL}`);
-  console.log(`     - 4 Dedicated Google Clients Initialized\n`);
-});
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`\n  🌊 Slip Stream Flawless AI Proxy running at http://localhost:${PORT}`);
+    console.log(`     - Model: ${MODEL}`);
+    console.log(`     - 4 Dedicated Google Clients Initialized\n`);
+  });
+}

@@ -1,13 +1,13 @@
-# Task Tracker: Flawless AI Architecture
+# Task Tracker: Vercel Deployment
 
-- `[/]` **Server Refactoring**
-  - `[ ]` Instantiate `companionAI` using `GEMINI_API_KEY_COMPANION`.
-  - `[ ]` Instantiate `notebookAI` using `GEMINI_API_KEY_SIMULATION`.
-  - `[ ]` Instantiate `quizAI` using `GEMINI_API_KEY_SECONDARY`.
-  - `[ ]` Instantiate `mentalHealthAI` using `GEMINI_API_KEY_MENTAL_HEALTH`.
-  - `[ ]` Rewrite all routes (`/api/companion`, `/api/notebook`, `/api/quiz`, `/api/mental-health`) to use the Google SDK `generateContent` method.
-  - `[ ]` Ensure all endpoints explicitly use model `gemini-3.6-flash`.
-  - `[ ]` Restart Express server.
-  
-- `[ ]` **Verification**
-  - `[ ]` Verify server starts without errors and all clients are mapped.
+- `[/]` **Fix TypeScript Errors**
+  - `[ ]` `src/App.tsx`: Remove `Users`, `HeartPulse`, `Code`, `setTimetable`, `index`.
+  - `[ ]` `src/components/CanvasEngine.tsx`: Remove `React` import.
+  - `[ ]` `src/components/MarkdownRenderer.tsx`: Remove `React` import.
+  - `[ ]` `src/hooks/useLocalStorage.ts`: Remove `useEffect` import.
+- `[ ]` **Vercel Serverless Config**
+  - `[ ]` Update `server.js` to export the `app` instance.
+  - `[ ]` Create `vercel.json` to route `/api/*` to `server.js`.
+- `[ ]` **Verification & Deployment**
+  - `[ ]` Run `npm run build` locally.
+  - `[ ]` Commit and `git push`.

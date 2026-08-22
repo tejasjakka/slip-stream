@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Image as ImageIcon, Mic, BookOpen, BrainCircuit, Users, HeartPulse, Code, ArrowLeft } from 'lucide-react';
+import { Send, Image as ImageIcon, Mic, BookOpen, BrainCircuit, ArrowLeft } from 'lucide-react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { MarkdownRenderer } from './components/MarkdownRenderer';
 import { CanvasEngine } from './components/CanvasEngine';
@@ -21,7 +21,7 @@ export default function App() {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   
-  const [timetable, setTimetable] = useLocalStorage<{sessions: TimetableSession[]}>('steam_timetable_data', { 
+  const [timetable] = useLocalStorage<{sessions: TimetableSession[]}>('steam_timetable_data', { 
     sessions: [
       { id: '1', timeString: '09:00 - 10:30 (Now)', title: 'Advanced Calculus', location: 'Room 304', isActive: true },
       { id: '2', timeString: '11:00 - 12:30', title: 'Physics II Lab', location: 'Lab B', isActive: false },
@@ -537,7 +537,7 @@ export default function App() {
                       <span className="material-symbols-outlined text-on-surface-variant group-hover/card:text-primary transition-colors duration-300 text-[24px]">calendar_today</span>
                     </div>
                     <div className="space-y-6 relative z-10">
-                      {timetable.sessions.length > 0 ? timetable.sessions.map((session, index) => (
+                      {timetable.sessions.length > 0 ? timetable.sessions.map((session) => (
                         <div key={session.id} className={`relative pl-6 before:content-[''] before:absolute before:left-[4px] before:top-2 before:w-1 before:h-1 before:rounded-full ${session.isActive ? 'before:-left-0 before:w-3 before:h-3 before:bg-primary before:shadow-[0_0_10px_rgba(110,54,210,0.5)]' : 'before:bg-outline-variant'}`}>
                           <p className={`font-label-caps uppercase mb-1 ${session.isActive ? 'text-primary' : 'text-on-surface-variant'}`}>{session.timeString}</p>
                           <p className={`font-body-lg font-medium ${session.isActive ? '' : 'opacity-60'}`}>{session.title}</p>
